@@ -3,6 +3,7 @@ import {JobsService} from "../../core/services/jobs.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Job} from "../../core/models/job.model";
+import {shareReplay, take} from "rxjs";
 
 @Component({
   selector: 'app-job-details',
@@ -10,9 +11,10 @@ import {Job} from "../../core/models/job.model";
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent implements OnInit {
-  jobForm!: FormGroup;
-  id!: number;
-  jobInfo!: Job;
+  jobForm: FormGroup;
+  id: number;
+  jobInfo: Job;
+  title = 'Edit the Job!';
 
   constructor(private jobsService: JobsService, private route: ActivatedRoute, private router: Router) {
     this.jobForm = new FormGroup({
@@ -33,7 +35,6 @@ export class JobDetailsComponent implements OnInit {
       this.setJobFormValues();
       }
     );
-
   }
 
   setJobFormValues() {
@@ -48,8 +49,10 @@ export class JobDetailsComponent implements OnInit {
     })
   }
 
-  submit() {
-    this.jobsService.editJob(this.jobForm.value, this.id).subscribe(
+  submit(jobForm: FormGroup) {
+    jobForm = this.jobForm.value;
+    this.jobsService.editJob(jobForm, this.id)
+      .subscribe(
       () => this.router.navigate(['/jobs']),
     );
   }

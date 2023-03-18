@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {Route, RouterModule} from "@angular/router";
 import {CreateJobComponent} from "./create-job.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../../shared/shared.module";
+import {JobFormComponent} from "../../shared/job-form/job-form.component";
 
 export const route: Route[] = [{
   path: '',
@@ -15,7 +17,8 @@ export const route: Route[] = [{
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(route),
-    CommonModule
+    CommonModule,
+    SharedModule
   ]
 })
 export class CreateJobModule { }

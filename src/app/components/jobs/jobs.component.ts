@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit {
-  jobs$!: Observable<Job[]>;
+  jobs$: Observable<Job[]>;
   constructor(private jobsService: JobsService, private router: Router) { }
 
   ngOnInit(): void {

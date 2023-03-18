@@ -12,7 +12,7 @@ export const route: Route[] = [{
   declarations: [JobsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(route)
+    RouterModule.forChild(route),
   ]
 })
 export class JobsModule { }
