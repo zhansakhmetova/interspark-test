@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-13 py-4">
+      <h1 class="title">Interspark Jobs</h1>
+      <div class="d-flex py-3">
+        <button class="btn btn-primary" [routerLink]="['/jobs/new']">Create a new job</button>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">Close Date</th>
+          <th scope="col">Experience required</th>
+          <th scope="col">Number of openings</th>
+          <th scope="col">Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let job of jobs$ | async" (click)="getDetailsByID(job.id)" class="pe-auto">
+          <td >{{ job.id }}</td>
+          <td>{{ job.job_title }}</td>
+          <td>{{ job.job_start_date }}</td>
+          <td>{{ job.job_close_date }}</td>
+          <td>{{ job.experience_required }}</td>
+          <td>{{ job.number_of_openings }}</td>
+          <td>{{ job.job_notes }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

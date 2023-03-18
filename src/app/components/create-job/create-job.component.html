@@ -1,0 +1,40 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col-13">
+      <h1 class="pb-4">Please fill in the form</h1>
+      <form action="" [formGroup]="jobForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label for="job-title" class="form-label">Job Title</label>
+          <input type="text" class="form-control" id="job-title" formControlName="job_title">
+        </div>
+        <div class="mb-3">
+          <label for="job-number" class="form-label">Job Number</label>
+          <input type="text" class="form-control" id="job-number" formControlName="job_number">
+        </div>
+        <div class="mb-3">
+          <label for="start-date" class="form-label">Start Date</label>
+          <input type="date" class="form-control" id="start-date" formControlName="job_start_date">
+        </div>
+        <div class="mb-3">
+          <label for="end-date" class="form-label">End Date</label>
+          <input type="date" class="form-control" id="end-date" formControlName="job_close_date">
+        </div>
+        <div class="mb-3">
+          <label for="experience" class="form-label pe-3">Experience Required</label>
+          <input class="form-check-input" type="checkbox" value="" id="experience" formControlName="experience_required">
+        </div>
+        <div class="mb-3">
+          <label for="opening" class="form-label ">Number Of Openings</label>
+          <input class="form-control" type="number" value="" id="opening" formControlName="number_of_openings">
+        </div>
+        <div class="mb-3">
+          <label for="notes" class="form-label">Job Notes</label>
+          <input class="form-control" type="text"  id="notes" formControlName="job_notes">
+        </div>
+        <div>
+          <button class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
