@@ -16,11 +16,11 @@ export class CreateJobComponent {
 
   constructor(private jobsService: JobsService, private router: Router) {
     this.jobForm = new FormGroup({
-      job_title: new FormControl("", Validators.required),
+      job_title: new FormControl(null, Validators.required),
       job_start_date: new FormControl("", Validators.required),
-      job_number: new FormControl("",  [Validators.required, Validators.max(7), Validators.min(7)]),
+      job_number: new FormControl("",  Validators.required),
       job_close_date: new FormControl("", Validators.required),
-      experience_required: new FormControl(false, Validators.required),
+      experience_required: new FormControl(false),
       number_of_openings: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/)]),
       job_notes: new FormControl("", Validators.required),
     });
