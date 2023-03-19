@@ -15,6 +15,7 @@ export class JobDetailsComponent implements OnInit {
   id: number;
   jobInfo: Job;
   title = 'Edit the Job!';
+  isEdit = true;
 
   constructor(private jobsService: JobsService, private route: ActivatedRoute, private router: Router) {
     this.jobForm = new FormGroup({
@@ -58,5 +59,12 @@ export class JobDetailsComponent implements OnInit {
         () => this.router.navigate(['/jobs']),
         (err: HttpErrorResponse) => {console.log(err.message)}
       );
+  }
+
+  deleteJobByID() {
+    this.jobsService.deleteJob(this.id).subscribe(
+      () => this.router.navigate(['/jobs']),
+      (err: HttpErrorResponse) => {console.log(err.message)}
+    )
   }
 }

@@ -9,6 +9,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class JobFormComponent {
   @Input() title = "";
   @Input() jobForm: FormGroup;
+  @Input() isEdit = false;
+  @Output() delete = new EventEmitter();
   @Output() submitForm = new EventEmitter();
 
   constructor() {
@@ -17,5 +19,10 @@ export class JobFormComponent {
   onSubmit() {
     this.submitForm.emit();
   }
+
+  deleteJob() {
+    this.delete.emit();
+  }
+
 
 }

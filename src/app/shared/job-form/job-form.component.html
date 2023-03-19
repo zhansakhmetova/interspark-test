@@ -64,6 +64,9 @@
         <div>
           <button class="btn btn-primary" [disabled]="jobForm.invalid" (click)="onSubmit()">Submit</button>
         </div>
+        <div *ngIf="isEdit" class="py-4">
+          <button class="btn btn-danger" (click)="deleteJob()">Delete the job </button>
+        </div>
       </form>
     </div>
   </div>

@@ -1,1 +1,4 @@
-<app-job-form [title]="title" [jobForm]="jobForm" (submitForm)="submit($event)"></app-job-form>
+<app-job-form [title]="title" [jobForm]="jobForm" (submitForm)="submit($event)"
+              [isEdit]="true" (delete)="deleteJobByID()">
+</app-job-form>
+
