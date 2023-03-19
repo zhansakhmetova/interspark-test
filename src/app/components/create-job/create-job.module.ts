@@ -4,7 +4,6 @@ import {Route, RouterModule} from "@angular/router";
 import {CreateJobComponent} from "./create-job.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
-import {JobFormComponent} from "../../shared/job-form/job-form.component";
 
 export const route: Route[] = [{
   path: '',

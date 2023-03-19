@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {JobsService} from "../../core/services/jobs.service";
 import {Router} from "@angular/router";
-import {take} from "rxjs";
+import {catchError} from "rxjs";
 
 @Component({
   selector: 'app-create-job',
@@ -15,23 +15,23 @@ export class CreateJobComponent {
 
   constructor(private jobsService: JobsService, private router: Router) {
     this.jobForm = new FormGroup({
-      job_title : new FormControl("", Validators.required),
-      job_start_date: new FormControl(""),
-      job_number : new FormControl(""),
-      job_close_date : new FormControl(""),
-      experience_required : new FormControl(""),
-      number_of_openings : new FormControl(""),
-      job_notes : new FormControl("",  Validators.required),
+      job_title: new FormControl("", Validators.required),
+      job_start_date: new FormControl("", Validators.required),
+      job_number: new FormControl("",  [Validators.required, Validators.max(7), Validators.min(7)]),
+      job_close_date: new FormControl("", Validators.required),
+      experience_required: new FormControl([false], Validators.required),
+      number_of_openings: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      job_notes: new FormControl("", Validators.required),
     });
   }
 
   submit(jobForm: any) {
     jobForm = this.jobForm.value;
     this.jobsService.createJob(jobForm)
-      .pipe(take(1))
       .subscribe(
-      () => this.router.navigate(['/jobs']),
-    );
+        () => this.router.navigate(['/jobs']),
+        err => {console.log(err)}
+      );
   }
 
 }
