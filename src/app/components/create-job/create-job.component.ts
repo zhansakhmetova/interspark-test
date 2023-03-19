@@ -20,7 +20,7 @@ export class CreateJobComponent {
       job_start_date: new FormControl("", Validators.required),
       job_number: new FormControl("",  [Validators.required, Validators.max(7), Validators.min(7)]),
       job_close_date: new FormControl("", Validators.required),
-      experience_required: new FormControl([false], Validators.required),
+      experience_required: new FormControl(false, Validators.required),
       number_of_openings: new FormControl("", [Validators.required, Validators.pattern(/^[0-9]+$/)]),
       job_notes: new FormControl("", Validators.required),
     });

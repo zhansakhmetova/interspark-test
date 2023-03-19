@@ -49,18 +49,6 @@
       "number_of_openings": 3,
       "job_notes": "Hellllooooo",
       "id": 5
-    },
-    {
-      "job_title": "ee",
-      "job_start_date": "",
-      "job_number": "ee",
-      "job_close_date": "",
-      "experience_required": [
-        false
-      ],
-      "number_of_openings": 1,
-      "job_notes": "33",
-      "id": 6
     }
   ]
 }
