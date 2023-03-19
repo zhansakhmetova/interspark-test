@@ -3,6 +3,7 @@ import {JobsService} from "../../core/services/jobs.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Job} from "../../core/models/job.model";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-job-details',
@@ -29,10 +30,12 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => this.id = params['id'])
-    this.jobsService.getDetails(this.id).subscribe((res) => {
+    this.jobsService.getDetails(this.id).subscribe(
+      (res) => {
         this.jobInfo = res;
         this.setJobFormValues();
-      }
+      },
+      (err: HttpErrorResponse) => {console.log(err.message)}
     );
   }
 
@@ -53,7 +56,7 @@ export class JobDetailsComponent implements OnInit {
     this.jobsService.editJob(jobForm, this.id)
       .subscribe(
         () => this.router.navigate(['/jobs']),
-        err => {console.log(err)}
+        (err: HttpErrorResponse) => {console.log(err.message)}
       );
   }
 }

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {JobsService} from "../../core/services/jobs.service";
 import {Router} from "@angular/router";
 import {catchError} from "rxjs";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-create-job',
@@ -30,7 +31,7 @@ export class CreateJobComponent {
     this.jobsService.createJob(jobForm)
       .subscribe(
         () => this.router.navigate(['/jobs']),
-        err => {console.log(err)}
+        (err: HttpErrorResponse) => {console.log(err.message)}
       );
   }
 

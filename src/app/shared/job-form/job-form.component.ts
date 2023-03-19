@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-job-form',
@@ -11,7 +11,8 @@ export class JobFormComponent {
   @Input() jobForm: FormGroup;
   @Output() submitForm = new EventEmitter();
 
-  constructor() {}
+  constructor() {
+  }
 
   onSubmit() {
     this.submitForm.emit();
